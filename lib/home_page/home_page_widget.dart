@@ -40,7 +40,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 10),
               child: GradientText(
                 'VoiceKrispie',
                 style: FlutterFlowTheme.of(context).title1.override(
