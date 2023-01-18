@@ -75,7 +75,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       if (FFAppState().recordState) {
                         apiResult2cr = await StopRecordingCall.call();
                         if ((apiResult2cr?.succeeded ?? true)) {
-                          FFAppState().update(() {});
                           setState(() {
                             FFAppState().recordState = false;
                             FFAppState().recordButtonColor = Color(0xFF139E93);
@@ -84,13 +83,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         }
                       } else {
                         apiResultnjy = await StartRecordingCall.call();
-                        if ((apiResultnjy?.succeeded ?? true)) {
-                          setState(() {
-                            FFAppState().recordState = true;
-                            FFAppState().recordButtonColor = Color(0xFF891D23);
-                            FFAppState().recordButtonText = 'Stop Recording';
-                          });
-                        }
+                        FFAppState().update(() {
+                          FFAppState().recordState = true;
+                          FFAppState().recordButtonColor =
+                              FlutterFlowTheme.of(context).alternate;
+                          FFAppState().recordButtonText = 'Stop recording';
+                        });
                       }
 
                       setState(() {});
