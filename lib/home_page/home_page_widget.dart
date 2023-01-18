@@ -16,7 +16,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
-  ApiCallResponse? apiResultnjy;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -82,13 +81,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           });
                         }
                       } else {
-                        apiResultnjy = await StartRecordingCall.call();
                         FFAppState().update(() {
                           FFAppState().recordState = true;
                           FFAppState().recordButtonColor =
                               FlutterFlowTheme.of(context).alternate;
                           FFAppState().recordButtonText = 'Stop recording';
                         });
+                        await StartRecordingCall.call();
                       }
 
                       setState(() {});
