@@ -4,6 +4,7 @@ import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_gradient_text/simple_gradient_text.dart';
 
@@ -16,6 +17,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
+  AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -59,7 +61,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
             ),
             Image.network(
-              'https://picsum.photos/seed/826/600',
+              FFAppState().sceneImage,
               width: MediaQuery.of(context).size.width * 0.9,
               fit: BoxFit.cover,
             ),
@@ -132,8 +134,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   scrollDirection: Axis.vertical,
                   children: [
                     FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
+                      onPressed: () async {
+                        soundPlayer ??= AudioPlayer();
+                        if (soundPlayer!.playing) {
+                          await soundPlayer!.stop();
+                        }
+
+                        soundPlayer!
+                            .setUrl(
+                                'http://192.168.2.30/Users/fydp/Gitlab/fydp_pi/slow/server/processed/positions.png')
+                            .then((_) => soundPlayer!.play());
                       },
                       text: '',
                       options: FFButtonOptions(
