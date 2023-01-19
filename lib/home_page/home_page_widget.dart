@@ -62,7 +62,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Image.network(
-                FFAppState().sceneImage,
+                'https://unsplash.com/photos/xyE1p1rG04U',
                 width: MediaQuery.of(context).size.width * 0.92,
                 fit: BoxFit.scaleDown,
               ),
