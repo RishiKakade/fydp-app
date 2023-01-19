@@ -60,6 +60,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 gradientType: GradientType.linear,
               ),
             ),
+            Expanded(
+              child: Image.network(
+                'https://picsum.photos/seed/509/600',
+                width: double.infinity,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
               child: Row(
