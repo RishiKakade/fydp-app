@@ -42,8 +42,7 @@ class FFAppState extends ChangeNotifier {
     _recordButtonText = _value;
   }
 
-  String _sceneImage =
-      'http://192.168.2.30/Users/fydp/Gitlab/fydp_pi/slow/server/processed/positions.png';
+  String _sceneImage = 'https://picsum.photos/seed/509/600';
   String get sceneImage => _sceneImage;
   set sceneImage(String _value) {
     _sceneImage = _value;

@@ -42,7 +42,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 10),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 10),
               child: GradientText(
                 'VoiceKrispie',
                 style: FlutterFlowTheme.of(context).title1.override(
@@ -63,7 +63,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Image.network(
-                'https://picsum.photos/seed/509/600',
+                FFAppState().sceneImage,
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,
@@ -91,7 +91,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           apiResultvew = await GetSceneCall.call();
                           _shouldSetState = true;
                           if ((apiResultvew?.succeeded ?? true)) {
-                            FFAppState().update(() {
+                            setState(() {
                               FFAppState().sceneImage =
                                   (apiResultvew?.jsonBody ?? '');
                             });
