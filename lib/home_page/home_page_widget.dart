@@ -17,6 +17,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
+  ApiCallResponse? apiResultyx8;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -85,6 +86,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
                           });
+                          apiResultyx8 = await GetSceneCall.call();
+                          if ((apiResultyx8?.succeeded ?? true)) {
+                            FFAppState().update(() {
+                              FFAppState().sceneImage = getJsonField(
+                                (apiResultyx8?.jsonBody ?? ''),
+                                r'''$.img''',
+                              );
+                            });
+                          }
                         }
                       } else {
                         FFAppState().update(() {
