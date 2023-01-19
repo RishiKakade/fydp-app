@@ -60,13 +60,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 gradientType: GradientType.linear,
               ),
             ),
-            Expanded(
-              child: Image.network(
-                '',
-                width: MediaQuery.of(context).size.width * 0.92,
-                fit: BoxFit.scaleDown,
-              ),
-            ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
               child: Row(
