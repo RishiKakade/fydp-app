@@ -17,6 +17,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
+  ApiCallResponse? apiResultgsc;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -89,12 +90,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().scenePath =
                                 'http://192.168.2.12:8080/scene';
                           });
-                          FFAppState().update(() {
-                            FFAppState().scenePath =
-                                'http://192.168.2.12:8080/scene';
-                          });
-                          if (_shouldSetState) setState(() {});
-                          return;
+                          apiResultgsc = await GetSceneCall.call();
+                          _shouldSetState = true;
+                          if ((apiResultgsc?.succeeded ?? true)) {
+                            FFAppState().update(() {
+                              FFAppState().scenePath =
+                                  'http://192.168.2.12:8080/scene';
+                            });
+                          }
                         } else {
                           if (_shouldSetState) setState(() {});
                           return;
