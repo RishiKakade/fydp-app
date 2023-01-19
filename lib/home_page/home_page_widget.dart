@@ -98,7 +98,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FFAppState().scenePath =
                                   'http://192.168.2.12:8080/scene';
                             });
+                          } else {
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
+
+                          if (_shouldSetState) setState(() {});
+                          return;
                         } else {
                           if (_shouldSetState) setState(() {});
                           return;
