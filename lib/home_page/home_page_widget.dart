@@ -17,8 +17,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
-  ApiCallResponse? apiResultvew;
-  ApiCallResponse? apiResultfd6;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -64,37 +62,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Image.network(
-                'http://192.168.2.12:8080/scene',
+                'https://picsum.photos/200/300',
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,
-              ),
-            ),
-            FFButtonWidget(
-              onPressed: () async {
-                apiResultfd6 = await GetSceneCall.call();
-                if ((apiResultfd6?.succeeded ?? true)) {
-                  FFAppState().update(() {
-                    FFAppState().sceneImage = FFAppState().sceneImage;
-                  });
-                }
-
-                setState(() {});
-              },
-              text: 'Button',
-              options: FFButtonOptions(
-                width: 130,
-                height: 40,
-                color: FlutterFlowTheme.of(context).primaryColor,
-                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
-                      fontFamily: 'Poppins',
-                      color: Colors.white,
-                    ),
-                borderSide: BorderSide(
-                  color: Colors.transparent,
-                  width: 1,
-                ),
-                borderRadius: BorderRadius.circular(8),
               ),
             ),
             Padding(
@@ -111,19 +82,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         apiResult2cr = await StopRecordingCall.call();
                         _shouldSetState = true;
                         if ((apiResult2cr?.succeeded ?? true)) {
-                          setState(() {
+                          FFAppState().update(() {
                             FFAppState().recordState = false;
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
                           });
-                          apiResultvew = await GetSceneCall.call();
-                          _shouldSetState = true;
-                          if (!(apiResultvew?.succeeded ?? true)) {
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-                          if (_shouldSetState) setState(() {});
-                          return;
                         } else {
                           if (_shouldSetState) setState(() {});
                           return;

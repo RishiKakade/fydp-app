@@ -42,34 +42,10 @@ class FFAppState extends ChangeNotifier {
     _recordButtonText = _value;
   }
 
-  String _sceneImage = 'https://192.168.2.12:8080/scene';
-  String get sceneImage => _sceneImage;
-  set sceneImage(String _value) {
-    _sceneImage = _value;
-  }
-
-  String _blueSpeakerPath = '';
-  String get blueSpeakerPath => _blueSpeakerPath;
-  set blueSpeakerPath(String _value) {
-    _blueSpeakerPath = _value;
-  }
-
-  String _redSpeakerPath = '';
-  String get redSpeakerPath => _redSpeakerPath;
-  set redSpeakerPath(String _value) {
-    _redSpeakerPath = _value;
-  }
-
-  String _orangeSpeakerPath = '';
-  String get orangeSpeakerPath => _orangeSpeakerPath;
-  set orangeSpeakerPath(String _value) {
-    _orangeSpeakerPath = _value;
-  }
-
-  String _greenSpeakerPath = '';
-  String get greenSpeakerPath => _greenSpeakerPath;
-  set greenSpeakerPath(String _value) {
-    _greenSpeakerPath = _value;
+  String _scenePath = 'http://192.168.2.12:8080/scene';
+  String get scenePath => _scenePath;
+  set scenePath(String _value) {
+    _scenePath = _value;
   }
 }
 
