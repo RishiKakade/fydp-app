@@ -86,7 +86,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().recordState = false;
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
+                            FFAppState().scenePath =
+                                'http://192.168.2.12:8080/scene';
                           });
+                          FFAppState().update(() {
+                            FFAppState().scenePath =
+                                'http://192.168.2.12:8080/scene';
+                          });
+                          if (_shouldSetState) setState(() {});
+                          return;
                         } else {
                           if (_shouldSetState) setState(() {});
                           return;
