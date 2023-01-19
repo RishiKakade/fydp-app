@@ -61,16 +61,19 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 gradientType: GradientType.linear,
               ),
             ),
-            Image.network(
-              FFAppState().sceneImage,
-              width: MediaQuery.of(context).size.width * 0.9,
-              fit: BoxFit.cover,
+            Expanded(
+              child: Image.network(
+                FFAppState().sceneImage,
+                width: MediaQuery.of(context).size.width * 0.92,
+                fit: BoxFit.scaleDown,
+              ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.fromSTEB(0, 15, 0, 15),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
@@ -86,8 +89,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           if ((apiResultpyt?.succeeded ?? true)) {
                             FFAppState().update(() {
                               FFAppState().sceneImage = valueOrDefault<String>(
-                                (apiResult2cr?.jsonBody ?? ''),
-                                'scene',
+                                (apiResultpyt?.jsonBody ?? ''),
+                                'https://unsplash.com/photos/xyE1p1rG04U',
                               );
                             });
                           }
@@ -120,6 +123,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           FlutterFlowTheme.of(context).subtitle2.override(
                                 fontFamily: 'Poppins',
                                 color: Colors.white,
+                                fontSize: 24,
+                                fontWeight: FontWeight.w200,
                               ),
                       borderSide: BorderSide(
                         color: Colors.transparent,
@@ -130,134 +135,159 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ],
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(15, 0, 15, 15),
-                child: GridView(
-                  padding: EdgeInsets.zero,
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                    childAspectRatio: 1.37,
-                  ),
-                  scrollDirection: Axis.vertical,
-                  children: [
-                    FFButtonWidget(
-                      onPressed: () async {
-                        soundPlayer ??= AudioPlayer();
-                        if (soundPlayer!.playing) {
-                          await soundPlayer!.stop();
-                        }
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () async {
+                          soundPlayer ??= AudioPlayer();
+                          if (soundPlayer!.playing) {
+                            await soundPlayer!.stop();
+                          }
 
-                        soundPlayer!
-                            .setUrl(
-                                'http://192.168.2.30/Users/fydp/Gitlab/fydp_pi/slow/server/processed/positions.png')
-                            .then((_) => soundPlayer!.play());
-                      },
-                      text: '',
-                      options: FFButtonOptions(
-                        width: 50,
-                        height: 25,
-                        color: FlutterFlowTheme.of(context).alternate,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(0),
-                          bottomRight: Radius.circular(50),
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(0),
-                        ),
-                      ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: '',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 25,
-                        color: Color(0xFF39D27D),
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(0),
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(0),
+                          soundPlayer!
+                              .setUrl(
+                                  'http://192.168.2.30/Users/fydp/Gitlab/fydp_pi/slow/server/processed/positions.png')
+                              .then((_) => soundPlayer!.play());
+                        },
+                        text: '',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 100,
+                          color: FlutterFlowTheme.of(context).alternate,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(50),
+                            topLeft: Radius.circular(0),
+                            topRight: Radius.circular(0),
+                          ),
                         ),
                       ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: '',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 25,
-                        color: FlutterFlowTheme.of(context).tertiaryColor,
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(0),
-                          bottomRight: Radius.circular(0),
-                          topLeft: Radius.circular(0),
-                          topRight: Radius.circular(50),
-                        ),
-                      ),
-                    ),
-                    FFButtonWidget(
-                      onPressed: () {
-                        print('Button pressed ...');
-                      },
-                      text: '',
-                      options: FFButtonOptions(
-                        width: 130,
-                        height: 25,
-                        color: Color(0xFF397FEF),
-                        textStyle:
-                            FlutterFlowTheme.of(context).subtitle2.override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                        borderSide: BorderSide(
-                          color: Colors.transparent,
-                          width: 1,
-                        ),
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(0),
-                          bottomRight: Radius.circular(0),
-                          topLeft: Radius.circular(50),
-                          topRight: Radius.circular(0),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: '',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 100,
+                          color: Color(0xFF39D27D),
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(50),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(0),
+                            topRight: Radius.circular(0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: '',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 100,
+                          color: FlutterFlowTheme.of(context).tertiaryColor,
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(0),
+                            topRight: Radius.circular(50),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      FFButtonWidget(
+                        onPressed: () {
+                          print('Button pressed ...');
+                        },
+                        text: '',
+                        options: FFButtonOptions(
+                          width: double.infinity,
+                          height: 100,
+                          color: Color(0xFF397FEF),
+                          textStyle:
+                              FlutterFlowTheme.of(context).subtitle2.override(
+                                    fontFamily: 'Poppins',
+                                    color: Colors.white,
+                                  ),
+                          borderSide: BorderSide(
+                            color: Colors.transparent,
+                            width: 1,
+                          ),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0),
+                            bottomRight: Radius.circular(0),
+                            topLeft: Radius.circular(50),
+                            topRight: Radius.circular(0),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),
