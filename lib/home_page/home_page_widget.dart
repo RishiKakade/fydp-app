@@ -2,9 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
-import '../flutter_flow/instant_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:provider/provider.dart';
@@ -22,34 +20,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResultgsc;
   ApiCallResponse? apiResult9ko;
   AudioPlayer? soundPlayer;
-  InstantTimer? instantTimer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    super.initState();
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      instantTimer = InstantTimer.periodic(
-        duration: Duration(milliseconds: 1000),
-        callback: (timer) async {
-          FFAppState().update(() {
-            FFAppState().scenePath = 'http://192.168.2.12:8080/scene';
-          });
-          FFAppState().update(() {
-            FFAppState().scenePath = 'http://192.168.2.12:8080/scene';
-          });
-        },
-        startImmediately: true,
-      );
-    });
-  }
-
-  @override
   void dispose() {
     _unfocusNode.dispose();
-    instantTimer?.cancel();
     super.dispose();
   }
 
@@ -116,7 +92,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           apiResultgsc = await GetSceneCall.call();
                           _shouldSetState = true;
                           if ((apiResultgsc?.succeeded ?? true)) {
-                            FFAppState().update(() {});
+                            setState(() {});
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;
