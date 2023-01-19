@@ -92,10 +92,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           _shouldSetState = true;
                           if ((apiResultvew?.succeeded ?? true)) {
                             FFAppState().update(() {
-                              FFAppState().sceneImage = getJsonField(
-                                (apiResultvew?.jsonBody ?? ''),
-                                r'''$.img''',
-                              );
+                              FFAppState().sceneImage =
+                                  (apiResultvew?.jsonBody ?? '');
                             });
                           } else {
                             if (_shouldSetState) setState(() {});
