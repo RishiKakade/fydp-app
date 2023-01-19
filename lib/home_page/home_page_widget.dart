@@ -18,6 +18,7 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
   ApiCallResponse? apiResultgsc;
+  ApiCallResponse? apiResult9ko;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -109,7 +110,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               FlutterFlowTheme.of(context).alternate;
                           FFAppState().recordButtonText = 'Stop recording';
                         });
-                        await StartRecordingCall.call();
+                        apiResult9ko = await StartRecordingCall.call();
+                        _shouldSetState = true;
+                        if ((apiResult9ko?.succeeded ?? true)) {
+                          if (_shouldSetState) setState(() {});
+                          return;
+                        }
+
+                        if (_shouldSetState) setState(() {});
+                        return;
                       }
 
                       if (_shouldSetState) setState(() {});
