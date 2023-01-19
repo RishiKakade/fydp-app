@@ -51,10 +51,15 @@ class GetSceneCall {
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
-      decodeUtf8: false,
+      decodeUtf8: true,
       cache: false,
     );
   }
+
+  static dynamic image(dynamic response) => getJsonField(
+        response,
+        r'''$.image''',
+      );
 }
 
 class ApiPagingParams {
