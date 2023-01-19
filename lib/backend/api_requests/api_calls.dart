@@ -47,9 +47,7 @@ class GetSceneCall {
       callName: 'getScene',
       apiUrl: '192.168.2.12:6000/scene',
       callType: ApiCallType.GET,
-      headers: {
-        'Authorization': 'Basic/ZnlkcDpraWVyc3Rlbm92ZXJ0b24yMDAwJA==',
-      },
+      headers: {},
       params: {},
       returnBody: true,
       encodeBodyUtf8: false,
