@@ -17,8 +17,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
-  ApiCallResponse? apiResultyx8;
-  ApiCallResponse? apiResultuso;
+  ApiCallResponse? apiResultvew;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -89,16 +88,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
                           });
-                          if (_shouldSetState) setState(() {});
-                          return;
-                        } else {
-                          apiResultyx8 = await GetSceneCall.call();
+                          apiResultvew = await GetSceneCall.call();
                           _shouldSetState = true;
-                          if ((apiResultyx8?.succeeded ?? true)) {
+                          if ((apiResultvew?.succeeded ?? true)) {
                             if (_shouldSetState) setState(() {});
                             return;
                           }
 
+                          if (_shouldSetState) setState(() {});
+                          return;
+                        } else {
                           if (_shouldSetState) setState(() {});
                           return;
                         }
@@ -139,37 +138,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         color: Colors.transparent,
                       ),
                       borderRadius: BorderRadius.circular(50),
-                    ),
-                  ),
-                  FFButtonWidget(
-                    onPressed: () async {
-                      var _shouldSetState = false;
-                      apiResultuso = await GetSceneCall.call();
-                      _shouldSetState = true;
-                      if ((apiResultuso?.succeeded ?? true)) {
-                        if (_shouldSetState) setState(() {});
-                        return;
-                      }
-
-                      if (_shouldSetState) setState(() {});
-                      return;
-                      if (_shouldSetState) setState(() {});
-                    },
-                    text: 'Button',
-                    options: FFButtonOptions(
-                      width: 130,
-                      height: 40,
-                      color: FlutterFlowTheme.of(context).primaryColor,
-                      textStyle:
-                          FlutterFlowTheme.of(context).subtitle2.override(
-                                fontFamily: 'Poppins',
-                                color: Colors.white,
-                              ),
-                      borderSide: BorderSide(
-                        color: Colors.transparent,
-                        width: 1,
-                      ),
-                      borderRadius: BorderRadius.circular(8),
                     ),
                   ),
                 ],
