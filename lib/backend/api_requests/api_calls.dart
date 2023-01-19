@@ -41,6 +41,24 @@ class StopRecordingCall {
   }
 }
 
+class GetSceneCall {
+  static Future<ApiCallResponse> call() {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getScene',
+      apiUrl: '192.168.2.12:6000/scene',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Basic/ZnlkcDpraWVyc3Rlbm92ZXJ0b24yMDAwJA==',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
