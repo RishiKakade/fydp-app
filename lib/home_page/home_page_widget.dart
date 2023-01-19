@@ -86,6 +86,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
                           });
+                        } else {
                           apiResultyx8 = await GetSceneCall.call();
                           if ((apiResultyx8?.succeeded ?? true)) {
                             FFAppState().update(() {
