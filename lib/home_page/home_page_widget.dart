@@ -82,7 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         apiResult2cr = await StopRecordingCall.call();
                         _shouldSetState = true;
                         if ((apiResult2cr?.succeeded ?? true)) {
-                          FFAppState().update(() {
+                          setState(() {
                             FFAppState().recordState = false;
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';

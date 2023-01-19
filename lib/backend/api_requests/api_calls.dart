@@ -55,11 +55,6 @@ class GetSceneCall {
       cache: false,
     );
   }
-
-  static dynamic image(dynamic response) => getJsonField(
-        response,
-        r'''$.image''',
-      );
 }
 
 class ApiPagingParams {
