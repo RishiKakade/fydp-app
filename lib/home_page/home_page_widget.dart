@@ -80,16 +80,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     onPressed: () async {
                       var _shouldSetState = false;
                       if (FFAppState().recordState) {
+                        setState(() {
+                          FFAppState().recordState = false;
+                          FFAppState().recordButtonColor = Color(0xFF139E93);
+                          FFAppState().recordButtonText = 'Record';
+                          FFAppState().scenePath =
+                              'http://192.168.2.12:8080/scene';
+                        });
                         apiResult2cr = await StopRecordingCall.call();
                         _shouldSetState = true;
                         if ((apiResult2cr?.succeeded ?? true)) {
-                          setState(() {
-                            FFAppState().recordState = false;
-                            FFAppState().recordButtonColor = Color(0xFF139E93);
-                            FFAppState().recordButtonText = 'Record';
-                            FFAppState().scenePath =
-                                'http://192.168.2.12:8080/scene';
-                          });
                           apiResultgsc = await GetSceneCall.call();
                           _shouldSetState = true;
                           if ((apiResultgsc?.succeeded ?? true)) {
