@@ -18,6 +18,7 @@ class HomePageWidget extends StatefulWidget {
 class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
   ApiCallResponse? apiResultvew;
+  ApiCallResponse? apiResultfd6;
   AudioPlayer? soundPlayer;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -67,6 +68,33 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,
+              ),
+            ),
+            FFButtonWidget(
+              onPressed: () async {
+                apiResultfd6 = await GetSceneCall.call();
+                if ((apiResultfd6?.succeeded ?? true)) {
+                  FFAppState().update(() {
+                    FFAppState().sceneImage = FFAppState().sceneImage;
+                  });
+                }
+
+                setState(() {});
+              },
+              text: 'Button',
+              options: FFButtonOptions(
+                width: 130,
+                height: 40,
+                color: FlutterFlowTheme.of(context).primaryColor,
+                textStyle: FlutterFlowTheme.of(context).subtitle2.override(
+                      fontFamily: 'Poppins',
+                      color: Colors.white,
+                    ),
+                borderSide: BorderSide(
+                  color: Colors.transparent,
+                  width: 1,
+                ),
+                borderRadius: BorderRadius.circular(8),
               ),
             ),
             Padding(
