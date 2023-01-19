@@ -88,10 +88,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           apiResultpyt = await GetSceneCall.call();
                           if ((apiResultpyt?.succeeded ?? true)) {
                             FFAppState().update(() {
-                              FFAppState().sceneImage = valueOrDefault<String>(
-                                (apiResultpyt?.jsonBody ?? ''),
-                                'https://unsplash.com/photos/xyE1p1rG04U',
-                              );
+                              FFAppState().sceneImage =
+                                  (apiResultpyt?.jsonBody ?? '');
                             });
                           }
                         }
