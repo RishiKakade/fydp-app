@@ -87,6 +87,21 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           FFAppState().scenePath =
                               'http://192.168.2.12:8080/scene';
                         });
+                      } else {
+                        FFAppState().update(() {
+                          FFAppState().recordState = true;
+                          FFAppState().recordButtonColor =
+                              FlutterFlowTheme.of(context).alternate;
+                          FFAppState().recordButtonText = 'Stop recording';
+                        });
+                        await StartRecordingCall.call();
+                        setState(() {
+                          FFAppState().recordState = false;
+                          FFAppState().recordButtonColor = Color(0xFF139E93);
+                          FFAppState().recordButtonText = 'Record';
+                          FFAppState().scenePath =
+                              'http://192.168.2.12:8080/scene';
+                        });
                         apiResult2cr = await StopRecordingCall.call();
                         _shouldSetState = true;
                         if ((apiResult2cr?.succeeded ?? true)) {
@@ -102,16 +117,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           if (_shouldSetState) setState(() {});
                           return;
                         }
-                      } else {
-                        FFAppState().update(() {
-                          FFAppState().recordState = true;
-                          FFAppState().recordButtonColor =
-                              FlutterFlowTheme.of(context).alternate;
-                          FFAppState().recordButtonText = 'Stop recording';
-                        });
-                        await StartRecordingCall.call();
-                        if (_shouldSetState) setState(() {});
-                        return;
                       }
 
                       if (_shouldSetState) setState(() {});
