@@ -78,24 +78,25 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 children: [
                   FFButtonWidget(
                     onPressed: () async {
+                      var _shouldSetState = false;
                       if (FFAppState().recordState) {
                         apiResult2cr = await StopRecordingCall.call();
+                        _shouldSetState = true;
                         if ((apiResult2cr?.succeeded ?? true)) {
                           setState(() {
                             FFAppState().recordState = false;
                             FFAppState().recordButtonColor = Color(0xFF139E93);
                             FFAppState().recordButtonText = 'Record';
                           });
-                        } else {
                           apiResultyx8 = await GetSceneCall.call();
+                          _shouldSetState = true;
                           if ((apiResultyx8?.succeeded ?? true)) {
-                            FFAppState().update(() {
-                              FFAppState().sceneImage = getJsonField(
-                                (apiResultyx8?.jsonBody ?? ''),
-                                r'''$.img''',
-                              );
-                            });
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
+
+                          if (_shouldSetState) setState(() {});
+                          return;
                         }
                       } else {
                         FFAppState().update(() {
@@ -107,7 +108,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         await StartRecordingCall.call();
                       }
 
-                      setState(() {});
+                      if (_shouldSetState) setState(() {});
                     },
                     text: valueOrDefault<String>(
                       FFAppState().recordButtonText,
