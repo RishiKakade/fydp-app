@@ -62,7 +62,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Image.network(
-                'https://picsum.photos/200/300',
+                FFAppState().scenePath,
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,

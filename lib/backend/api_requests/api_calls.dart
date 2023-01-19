@@ -13,7 +13,7 @@ class StartRecordingCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'startRecording',
-      apiUrl: 'http://192.168.2.30:8080/startRecording',
+      apiUrl: 'http://192.168.2.12:8080/startRecording',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
@@ -29,7 +29,7 @@ class StopRecordingCall {
   static Future<ApiCallResponse> call() {
     return ApiManager.instance.makeApiCall(
       callName: 'stopRecording',
-      apiUrl: 'http://192.168.2.30:8080/stopRecording',
+      apiUrl: 'http://192.168.2.12:8080/stopRecording',
       callType: ApiCallType.GET,
       headers: {},
       params: {},
