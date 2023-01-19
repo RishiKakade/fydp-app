@@ -64,7 +64,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             ),
             Expanded(
               child: Image.network(
-                FFAppState().sceneImage,
+                'http://192.168.2.12:8080/scene',
                 width: double.infinity,
                 height: 100,
                 fit: BoxFit.cover,
