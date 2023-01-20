@@ -85,6 +85,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           FFAppState().recordState = false;
                           FFAppState().recordButtonColor = Color(0xFF139E93);
                           FFAppState().recordButtonText = 'Record';
+                          FFAppState().scenePath =
+                              'http://192.168.2.12:8080/scene';
                         });
                         apiResult2cr = await StopRecordingCall.call();
                         _shouldSetState = true;
@@ -92,7 +94,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           apiResultgsc = await GetSceneCall.call();
                           _shouldSetState = true;
                           if ((apiResultgsc?.succeeded ?? true)) {
-                            setState(() {});
+                            setState(() {
+                              FFAppState().scenePath =
+                                  'http://192.168.2.12:8080/scene?trtrbt';
+                            });
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;
@@ -169,8 +174,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           }
 
                           soundPlayer!
-                              .setUrl(
-                                  'http://192.168.2.30/Users/fydp/Gitlab/fydp_pi/slow/server/processed/positions.png')
+                              .setUrl('')
                               .then((_) => soundPlayer!.play());
                         },
                         text: '',
