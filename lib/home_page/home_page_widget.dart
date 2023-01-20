@@ -178,7 +178,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           }
 
                           await soundPlayer1!
-                              .setUrl(FFAppState().redSpeaker)
+                              .setUrl(functions
+                                  .genUniqueAudioPath(FFAppState().redSpeaker))
                               .then((_) => soundPlayer1!.play());
                         },
                         text: '',
@@ -218,7 +219,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           }
 
                           await soundPlayer2!
-                              .setUrl(FFAppState().greenSpeaker)
+                              .setUrl(functions.genUniqueAudioPath(
+                                  FFAppState().greenSpeaker))
                               .then((_) => soundPlayer2!.play());
                         },
                         text: '',
@@ -265,7 +267,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           }
 
                           await soundPlayer3!
-                              .setUrl(FFAppState().orangeSpeaker)
+                              .setUrl(functions.genUniqueAudioPath(
+                                  FFAppState().orangeSpeaker))
                               .then((_) => soundPlayer3!.play());
                         },
                         text: '',
@@ -305,7 +308,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           }
 
                           await soundPlayer4!
-                              .setUrl(FFAppState().blueSpeaker)
+                              .setUrl(functions
+                                  .genUniqueAudioPath(FFAppState().blueSpeaker))
                               .then((_) => soundPlayer4!.play());
                         },
                         text: '',
