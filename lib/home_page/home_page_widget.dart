@@ -2,6 +2,7 @@ import '../backend/api_requests/api_calls.dart';
 import '../flutter_flow/flutter_flow_theme.dart';
 import '../flutter_flow/flutter_flow_util.dart';
 import '../flutter_flow/flutter_flow_widgets.dart';
+import '../flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:just_audio/just_audio.dart';
@@ -94,9 +95,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           apiResultgsc = await GetSceneCall.call();
                           _shouldSetState = true;
                           if ((apiResultgsc?.succeeded ?? true)) {
-                            setState(() {
-                              FFAppState().scenePath =
-                                  'http://192.168.2.12:8080/scene?trtrbt';
+                            FFAppState().update(() {
+                              FFAppState().scenePath = functions
+                                  .genUniqueImagePath(FFAppState().scenePath);
                             });
                           } else {
                             if (_shouldSetState) setState(() {});
