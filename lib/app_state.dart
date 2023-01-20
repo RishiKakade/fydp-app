@@ -47,6 +47,30 @@ class FFAppState extends ChangeNotifier {
   set scenePath(String _value) {
     _scenePath = _value;
   }
+
+  String _blueSpeaker = 'http://192.168.2.12:8080/blue';
+  String get blueSpeaker => _blueSpeaker;
+  set blueSpeaker(String _value) {
+    _blueSpeaker = _value;
+  }
+
+  String _redSpeaker = 'http://192.168.2.12:8080/red';
+  String get redSpeaker => _redSpeaker;
+  set redSpeaker(String _value) {
+    _redSpeaker = _value;
+  }
+
+  String _greenSpeaker = 'http://192.168.2.12:8080/green';
+  String get greenSpeaker => _greenSpeaker;
+  set greenSpeaker(String _value) {
+    _greenSpeaker = _value;
+  }
+
+  String _orangeSpeaker = 'http://192.168.2.12:8080/orange';
+  String get orangeSpeaker => _orangeSpeaker;
+  set orangeSpeaker(String _value) {
+    _orangeSpeaker = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

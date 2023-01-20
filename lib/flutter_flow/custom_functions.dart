@@ -11,3 +11,7 @@ import 'place.dart';
 String genUniqueImagePath(String scenePath) {
   return scenePath + '?t=' + DateTime.now().millisecondsSinceEpoch.toString();
 }
+
+String genUniqueAudioPath(String audio) {
+  return audio + '?t=' + DateTime.now().millisecondsSinceEpoch.toString();
+}

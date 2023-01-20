@@ -20,7 +20,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   ApiCallResponse? apiResult2cr;
   ApiCallResponse? apiResultgsc;
   ApiCallResponse? apiResult9ko;
-  AudioPlayer? soundPlayer;
+  AudioPlayer? soundPlayer1;
+  AudioPlayer? soundPlayer2;
+  AudioPlayer? soundPlayer3;
+  AudioPlayer? soundPlayer4;
   final _unfocusNode = FocusNode();
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -169,14 +172,14 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     children: [
                       FFButtonWidget(
                         onPressed: () async {
-                          soundPlayer ??= AudioPlayer();
-                          if (soundPlayer!.playing) {
-                            await soundPlayer!.stop();
+                          soundPlayer1 ??= AudioPlayer();
+                          if (soundPlayer1!.playing) {
+                            await soundPlayer1!.stop();
                           }
 
-                          soundPlayer!
-                              .setUrl('')
-                              .then((_) => soundPlayer!.play());
+                          await soundPlayer1!
+                              .setUrl(FFAppState().redSpeaker)
+                              .then((_) => soundPlayer1!.play());
                         },
                         text: '',
                         options: FFButtonOptions(
@@ -208,8 +211,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          soundPlayer2 ??= AudioPlayer();
+                          if (soundPlayer2!.playing) {
+                            await soundPlayer2!.stop();
+                          }
+
+                          await soundPlayer2!
+                              .setUrl(FFAppState().greenSpeaker)
+                              .then((_) => soundPlayer2!.play());
                         },
                         text: '',
                         options: FFButtonOptions(
@@ -248,8 +258,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          soundPlayer3 ??= AudioPlayer();
+                          if (soundPlayer3!.playing) {
+                            await soundPlayer3!.stop();
+                          }
+
+                          await soundPlayer3!
+                              .setUrl(FFAppState().orangeSpeaker)
+                              .then((_) => soundPlayer3!.play());
                         },
                         text: '',
                         options: FFButtonOptions(
@@ -281,8 +298,15 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
+                        onPressed: () async {
+                          soundPlayer4 ??= AudioPlayer();
+                          if (soundPlayer4!.playing) {
+                            await soundPlayer4!.stop();
+                          }
+
+                          await soundPlayer4!
+                              .setUrl(FFAppState().blueSpeaker)
+                              .then((_) => soundPlayer4!.play());
                         },
                         text: '',
                         options: FFButtonOptions(
