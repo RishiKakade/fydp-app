@@ -9,5 +9,5 @@ import 'lat_lng.dart';
 import 'place.dart';
 
 String genUniqueImagePath(String scenePath) {
-  return scenePath + 't=' + DateTime.now().millisecond.toString();
+  return scenePath + '?t=' + DateTime.now().millisecondsSinceEpoch.toString();
 }
